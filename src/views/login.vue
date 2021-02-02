@@ -1,44 +1,62 @@
 <template>
   <div class="login">
-      <login-top middleTop='注册bilibili'></login-top>
-      <login-text label="昵称" placeholder="请输入昵称" style="margin:4vw 0"></login-text>
-      <login-text  label="手机号码" placeholder="请输入手机号码" rule='^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$'></login-text>
-      <login-text label="密码" placeholder="请输入密码" type='password' rule='^.{6,16}$'></login-text>
-      <login-btn btnText="注册"></login-btn>
-
+    <login-top middleTop="注册bilibili"></login-top>
+    <login-text
+      label="昵称"
+      placeholder="请输入昵称"
+      style="margin: 4vw 0"
+      @inputChange="successInput"
+    ></login-text>
+    <login-text
+      label="手机号码"
+      placeholder="请输入手机号码"
+      rule="^.{6,16}$"
+      @inputChange="successInput"
+    ></login-text>
+    <login-text
+      label="密码"
+      placeholder="请输入密码"
+      type="password"
+      rule="^.{6,16}$"
+      @inputChange="successInput"
+    ></login-text>
+    <login-btn btnText="注册" style="margin: 20px 0 0 0"></login-btn>
   </div>
 </template>
 
 <script>
-import LoginBtn from '../components/LoginBtn.vue';
-import LoginText from '../components/LoginText.vue';
+import LoginBtn from "../components/LoginBtn.vue";
+import LoginText from "../components/LoginText.vue";
 // import loginTop from '../components/LoginTop'
-import LoginTop from '../components/LoginTop.vue';
+import LoginTop from "../components/LoginTop.vue";
 
-  export default {
-    components:{
-        // loginTop
-        LoginTop,
+export default {
+  components: {
+    // loginTop
+    LoginTop,
 
-        LoginText,
-        LoginBtn
-    },
-    
+    LoginText,
+    LoginBtn,
+  },
+
   data() {
     return {
-
+      name: "",
+      usename: "",
+      password: "",
     };
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
+  created() {},
+  mounted() {},
   methods: {
-
+    successInput(content) {
+      this.name = content;
+      this.usename = content;
+      this.password = content;
+      console.log(this.name);
+    },
   },
-}
+};
 </script>
 
 <style lang='less' scoped>
