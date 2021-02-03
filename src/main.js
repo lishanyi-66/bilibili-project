@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import Vant from 'vant'
 import 'vant/lib/index.css';
+import http from '../http'
+// import { prototype } from 'vue/types/umd'
+Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 Vue.use(Vant)
@@ -13,4 +16,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
- 

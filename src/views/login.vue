@@ -20,7 +20,11 @@
       rule="^.{6,16}$"
       @inputChange="successInput"
     ></login-text>
-    <login-btn btnText="注册" style="margin: 20px 0 0 0"></login-btn>
+    <login-btn
+      btnText="注册"
+      style="margin: 20px 0 0 0"
+      @loginSubmit="loginSubmit"
+    ></login-btn>
   </div>
 </template>
 
@@ -42,7 +46,7 @@ export default {
   data() {
     return {
       name: "",
-      usename: "",
+      username: "",
       password: "",
     };
   },
@@ -51,9 +55,27 @@ export default {
   methods: {
     successInput(content) {
       this.name = content;
-      this.usename = content;
+      this.username = content;
       this.password = content;
-      console.log(this.name);
+      // console.log(this.name);
+    },
+    async loginSubmit() {
+      //再一次效验正则
+      let ruleg = /^.{6,16}$/;
+      // console.log("被点击了");
+      if (
+        ruleg.test(this.name) &&
+        ruleg.test(this.username) &&
+        ruleg.test(this.password)
+      ) {
+        console.log("验证通过");
+        const res = await this.$http.post("/register", {
+          name: this.name,
+          username: this.username,
+          password: this.password,
+        });
+        console.log(res);
+      }
     },
   },
 };
