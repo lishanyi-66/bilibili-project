@@ -1,49 +1,39 @@
 <template>
   <div class="login">
-      <div></div>
-      <div>{{middleTop}}</div>
-      <div></div>
+    <div></div>
+    <div>{{ middleTop }}</div>
+    <div>
+      <slot name="right"></slot>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-  props:[
-      'middleTop'    
-  ],
-          
+export default {
+  props: ["middleTop"],
+
   data() {
-    return {
-
-    };
+    return {};
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
-  methods: {
-
-  },
-}
+  created() {},
+  mounted() {},
+  methods: {},
+};
 </script>
 
 <style lang='less' scoped>
-.login{
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 12vw;
+  div {
+    flex: 1;
     display: flex;
     justify-content: center;
-        align-items: center;
-    background-color: white;
-    width: 100%;
-    height: 12vw;
-    div{
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        font-size: 4vw;
-        
-    }
+    font-size: 4vw;
+  }
 }
-
 </style>

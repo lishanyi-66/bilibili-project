@@ -1,23 +1,22 @@
 <template>
   <div class="login">
-    <login-top middleTop="登录bilibili">
-      <div slot="right" @click="registerClick" style="font-size: 10px">
-        用户注册
+    <login-top middleTop="注册bilibili">
+      <div slot="right" @click="loginClick" style="font-size: 10px">
+        用户登录
       </div>
     </login-top>
-    <!-- <login-text
+    <login-text
       label="昵称"
       placeholder="请输入昵称"
       style="margin: 4vw 0"
       rule="^.{6,16}$"
       @inputChange="(res) => (model.name = res)"
-    ></login-text> -->
+    ></login-text>
     <login-text
-      label="账号"
-      placeholder="请输入账号"
+      label="手机号码"
+      placeholder="请输入手机号码"
       rule="^.{6,16}$"
       @inputChange="(res) => (model.username = res)"
-      style="margin: 15px 0"
     ></login-text>
     <login-text
       label="密码"
@@ -26,7 +25,7 @@
       rule="^.{6,16}$"
       @inputChange="(res) => (model.password = res)"
     ></login-text>
-    <login-btn btnText="登录" @loginSubmit="loginSubmit"></login-btn>
+    <login-btn btnText="注册" @loginSubmit="loginSubmit"></login-btn>
   </div>
 </template>
 
@@ -63,11 +62,11 @@ export default {
       let ruleg = /^.{6,16}$/;
       // console.log("被点击了");
       if (
-        // ruleg.test(this.model.name) &&
+        ruleg.test(this.model.name) &&
         ruleg.test(this.model.username) &&
         ruleg.test(this.model.password)
       ) {
-        // console.log("验证通过");
+        console.log("验证通过");
         const res = await this.$http.post("/register", this.model);
         console.log(res);
         this.$msg.fail(res.data.msg);
@@ -75,8 +74,8 @@ export default {
         this.$msg.fail("格式不正确，重新输入");
       }
     },
-    registerClick() {
-      this.$router.push("/register");
+    loginClick() {
+      this.$router.push("/login");
     },
   },
 };
