@@ -2,13 +2,25 @@
   <div>
     <div class="backgoundImg"></div>
     <div class="part1">
-      <div class="face"></div>
+      <div class="face">
+        头像
+      </div>
       <div class="relation">
         <div class="count">
-          <div class="fans"></div>
-          <div class="focus"></div>
-          <div class="likes"></div>
+          <div class="fans">
+            <div class="num">35</div>
+            <div>粉丝</div>
+          </div>
+          <div class="focus">
+            <div class="num">163</div>
+            <div>关注</div>
+          </div>
+          <div class="likes">
+            <div class="num">30</div>
+            <div>获赞</div>
+          </div>
         </div>
+        <!-- 编辑资料按钮 -->
         <div class="follow-btn">
           <button>编辑资料</button>
         </div>
@@ -36,5 +48,29 @@ export default {};
   background-color: white;
   width: 100%;
   height: 300px;
+  display: flex;
+  .face{
+      flex: 2;
+    }
+  .relation{
+    flex: 4;
+    .count{
+      
+      display: flex;
+      justify-content: space-around;
+      // align-items: center;
+      .fans{
+        flex: 1;
+        text-align: center;
+      }
+      .focus{
+        flex: 1;
+      }
+      .likes{
+        flex: 1;
+      }
+      
+    }
+  }
 }
 </style>
