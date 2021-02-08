@@ -28,7 +28,7 @@
     </div>
     <div class="part2">
       <div class="base">
-        <div class="name">昵称</div>
+        <div class="name">{{userinfo}}</div>
         <div class="level">等级</div>
       </div>
       <div class="desc">
@@ -40,11 +40,17 @@
         </div>
       </div>
     </div>
+    <div class="bars">
+      <span>动态</span>
+      <span>视频</span>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props:['userinfo']
+};
 </script>
 
 <style lang='less' scope>
@@ -150,8 +156,9 @@ background-color: white;
     // justify-content: center;
     align-items: center;
     
+    
     .name{
-      font-size: 22px;
+      font-size: 20px;
       margin-right: 10px;
     }
 
@@ -161,6 +168,17 @@ background-color: white;
     justify-content: space-between;
     font-size: 14px;
     margin-top: 10px;
+  }
+}
+.bars{
+  // padding: 10px;
+  display: flex;
+  span{
+    display: block;
+    // margin: 10px;
+    padding: 10px;
+    // margin:10px 10px 10px 10px;
+    font-size: 14px;
   }
 }
 }

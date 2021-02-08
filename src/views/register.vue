@@ -70,6 +70,11 @@ export default {
         const res = await this.$http.post("/register", this.model);
         console.log(res);
         this.$msg.fail(res.data.msg);
+        localStorage.setItem('id',res.data.id)
+        localStorage.setItem('token',res.data.objtoken)
+        setTimeout(()=>{
+          this.$router.push('/userinfo')
+        },1000)
       } else {
         this.$msg.fail("格式不正确，重新输入");
       }

@@ -4,7 +4,7 @@
     <!-- 背景 -->
 
     <!-- 栏目 -->
-    <user-detail />
+    <user-detail :userinfo='model'></user-detail>
   </div>
 </template>
 
@@ -13,6 +13,31 @@ import NavBar from "../components/NavBar.vue";
 import UserDetail from "../components/userDetail.vue";
 export default {
   components: { NavBar, UserDetail },
+  data(){
+    return{
+      model:{},
+    }
+  },
+  methods:{
+     async UserInfoData(){
+      // console.log('页面被调用')
+      const res=await this.$http.get('/user/' + localStorage.getItem('id'),{
+        headers:{
+          'Authorization':'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      console.log(res)
+      
+      // console.log(model)
+      this.model=res.data[0].name
+      // console.log(lv)
+      // this.model=lv
+      // console.log(this.model)
+    }
+  },
+  created(){
+    this.UserInfoData()
+  }
 };
 </script>
 
