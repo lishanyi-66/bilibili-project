@@ -68,11 +68,19 @@ export default {
         ruleg.test(this.model.password)
       ) {
         // console.log("验证通过");
-        const res = await this.$http.post("/register", this.model);
+        const res = await this.$http.post("/login", this.model);
         console.log(res);
         this.$msg.fail(res.data.msg);
+        if (res.data.code == 301 || res.data.code == 302) {
+          return;
+        }
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("id", res.data.id);
+        setTimeout(() => {
+          this.$router.push("/userinfo");
+        }, 1000);
       } else {
-        this.$msg.fail("格式不正确，重新输入");
+        this.$msg.fail("登录失败，重新输入");
       }
     },
     registerClick() {

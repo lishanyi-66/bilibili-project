@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect:'/userinfo'
+    redirect:'/login'
   },
   {
     path: '/register',
@@ -24,7 +24,11 @@ const routes = [
   },
   {
     path:'/userinfo',
-    component:()=>import('../views/userInfo.vue')
+    component:()=>import('../views/userInfo.vue'),
+    meta:{
+      istoken:true
+    }
+    
   }
 ]
 
@@ -33,5 +37,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+// 全局路由守卫，页面跳转前验证登录状态
+// 并不是所有页面都需要token验证登录，可以设置meta方法
 
+router.beforeEach((to,from,next)=>{
+  if(!localStorage.getItem('token')&&!localStorage.getItem('id')&&to.meta.istoken==true){
+    router.push('/login')
+  }else{
+    next()
+  }
+})
 export default router
