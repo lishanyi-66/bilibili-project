@@ -22,19 +22,17 @@
         </div>
         <!-- 编辑资料按钮 -->
         <div class="follow-btn">
-          <div>编辑资料</div>
+          <div @click="$router.push('/edit')">编辑资料</div>
         </div>
       </div>
     </div>
     <div class="part2">
       <div class="base">
-        <div class="name">{{userinfo}}</div>
+        <div class="name">{{ userinfo }}</div>
         <div class="level">等级</div>
       </div>
       <div class="desc">
-        <div class="content">
-          这个人很神秘，什么都没留下
-        </div>
+        <div class="content">这个人很神秘，什么都没留下</div>
         <div class="spread-btn">
           <a href="#">展开</a>
         </div>
@@ -49,35 +47,35 @@
 
 <script>
 export default {
-  props:['userinfo']
+  props: ["userinfo"],
 };
 </script>
 
 <style lang='less' scope>
-.m-space-info{
-width: 100%;
-background-color: white;
-.banner {
-  //   background-image: "../assets/bannerTop_new.png";
+.m-space-info {
   width: 100%;
-  height: 90px;
-  //   background-color: red;
-  background-image: url("../assets/bannerTop_new.png");
-  background-repeat: no-repeat;
+  background-color: white;
+  .banner {
+    //   background-image: "../assets/bannerTop_new.png";
+    width: 100%;
+    height: 90px;
+    //   background-color: red;
+    background-image: url("../assets/bannerTop_new.png");
+    background-repeat: no-repeat;
     background-position: center;
-  background-size: 100%;
-}
-.part1 {
-  // background-color: white;
-  
-  display: flex;
-  // margin-right: 10px;
-  .face{
+    background-size: 100%;
+  }
+  .part1 {
+    // background-color: white;
+
+    display: flex;
+    // margin-right: 10px;
+    .face {
       flex: 2;
       display: flex;
       justify-content: center;
       align-items: center;
-      .imgface{
+      .imgface {
         width: 80px;
         height: 80px;
         background-color: royalblue;
@@ -85,102 +83,97 @@ background-color: white;
       }
       // background-color: red;
     }
-  .relation{
-    flex: 4;
-    margin: 10px 10px 10px 0;
-    color: #999;
-    font-size: 14px;
-    .count{
-      
-      display: flex;
-      justify-content: space-around;
-      // align-items: center;
-      .fans{
-        flex: 1;
-        text-align: center;
-        position: relative;
-        &::after{
-          content:'';
-          border-right: 1px solid #999;
-          position:absolute;
-          // color:red;
-          bottom: 0;
-          right: 0;
-          top: 0;
-          width: 1px;
-          height: 40px;
-          transform: scale(0.5);
-          transform-origin: left;
+    .relation {
+      flex: 4;
+      margin: 10px 10px 10px 0;
+      color: #999;
+      font-size: 14px;
+      .count {
+        display: flex;
+        justify-content: space-around;
+        // align-items: center;
+        .fans {
+          flex: 1;
+          text-align: center;
+          position: relative;
+          &::after {
+            content: "";
+            border-right: 1px solid #999;
+            position: absolute;
+            // color:red;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            width: 1px;
+            height: 40px;
+            transform: scale(0.5);
+            transform-origin: left;
+          }
+        }
+        .focus {
+          flex: 1;
+          text-align: center;
+          // border-right: 1px solid red;
+          position: relative;
+          &::after {
+            content: "";
+            border-right: 1px solid #999;
+            position: absolute;
+            // color:red;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            width: 1px;
+            height: 40px;
+            transform: scale(0.5);
+            transform-origin: left;
+          }
+        }
+        .likes {
+          flex: 1;
+          text-align: center;
         }
       }
-      .focus{
-        flex: 1;
-        text-align: center;
-        // border-right: 1px solid red;
-        position:relative;
-        &::after{
-          content:'';
-          border-right: 1px solid #999;
-          position:absolute;
-          // color:red;
-          bottom: 0;
-          right: 0;
-          top: 0;
-          width: 1px;
-          height: 40px;
-          transform: scale(0.5);
-          transform-origin: left;
-        }
-      }
-      .likes{
-        flex: 1;
-        text-align: center;
-      }
-      
+    }
+    .follow-btn {
+      width: 100%;
+      border: 1px solid #fb7299;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 10px 0;
+      text-align: center;
+      color: #fb7299;
     }
   }
-  .follow-btn{
-    width: 100%;
-    border: 1px solid #fb7299;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 10px 0;
-    text-align: center;
-    color:#fb7299;
-  }
-}
-.part2{
-  padding: 10px;
-  .base{
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    
-    
-    .name{
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-  }
-  .desc{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-}
-.bars{
-  // padding: 10px;
-  display: flex;
-  span{
-    display: block;
-    // margin: 10px;
+  .part2 {
     padding: 10px;
-    // margin:10px 10px 10px 10px;
-    font-size: 14px;
+    .base {
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+
+      .name {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+    .desc {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+  .bars {
+    // padding: 10px;
+    display: flex;
+    span {
+      display: block;
+      // margin: 10px;
+      padding: 10px;
+      // margin:10px 10px 10px 10px;
+      font-size: 14px;
+    }
   }
 }
-}
-
 </style>

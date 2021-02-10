@@ -27,8 +27,14 @@ const routes = [
     component:()=>import('../views/userInfo.vue'),
     meta:{
       istoken:true
+    },
+  },
+  {
+    path:'/edit',
+    component:()=>import('../views/Edit.vue'),
+    meta:{
+      istoken:true
     }
-    
   }
 ]
 
