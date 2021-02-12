@@ -7,14 +7,27 @@
       </p>
     </div>
     <div class="perinfo">
-      <div class="headpor"></div>
+      <div class="headpor">
+        <img :src="imgUrl" alt="" @click="$router.push('/edit')" />
+      </div>
       <img src="../assets/download.png" alt="" class="download" />
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["userinfo"],
+  data() {
+    return {
+      imgUrl: "",
+    };
+  },
+  async mounted() {
+    const res = await this.$http.get("/user/" + localStorage.getItem("id"));
+    this.imgUrl = res.data[0].user_img;
+  },
+};
 </script>
 
 <style lang='less' scope>
@@ -28,7 +41,7 @@ export default {};
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .headpor {
+    .headpor img {
       width: 22px;
       height: 22px;
       background-color: turquoise;

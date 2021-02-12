@@ -3,7 +3,9 @@
     <div class="banner"></div>
     <div class="part1">
       <div class="face">
-        <div class="imgface"></div>
+        <!-- <div class="imgface"></div> -->
+        <img :src="userinfo.user_img" alt="" v-if="userinfo.user_img" />
+        <img src="../assets/头像.jpeg" alt="" v-else />
       </div>
       <div class="relation">
         <div class="count">
@@ -28,7 +30,7 @@
     </div>
     <div class="part2">
       <div class="base">
-        <div class="name">{{ userinfo }}</div>
+        <div class="name">{{ userinfo.name }}</div>
         <div class="level">等级</div>
       </div>
       <div class="desc">
@@ -75,7 +77,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      .imgface {
+      img {
         width: 80px;
         height: 80px;
         background-color: royalblue;

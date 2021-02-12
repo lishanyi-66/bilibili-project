@@ -30,6 +30,10 @@
       <edit-banner left="个性签名" @bannerClick="personshow = true">
         <a href="javascript:;" slot="right">{{ model.user_desc }}</a>
       </edit-banner>
+      <div class="editPart1">
+        <div class="exitLogin" @click="$router.push('/login')">退出登录</div>
+        <div class="back" @click="$router.push('/userinfo')">返回空间</div>
+      </div>
       <!-- 昵称 -->
       <van-dialog
         v-model="show"
@@ -159,5 +163,17 @@ export default {
   width: 46px;
   height: 46px;
   border-radius: 50%;
+}
+.editPart1 {
+  background-color: white;
+  margin-top: 15px;
+  .exitLogin {
+    padding: 10px;
+    text-align: center;
+  }
+  .back {
+    padding: 10px;
+    text-align: center;
+  }
 }
 </style>

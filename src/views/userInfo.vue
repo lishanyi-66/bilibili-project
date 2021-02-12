@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar />
+    <nav-bar :userinfo="model" />
     <!-- 背景 -->
 
     <!-- 栏目 -->
@@ -23,7 +23,7 @@ export default {
       // console.log('页面被调用')
       const res = await this.$http.get("/user/" + localStorage.getItem("id"));
       // console.log(model)
-      this.model = res.data[0].name;
+      this.model = res.data[0];
       // console.log(lv)
       // this.model=lv
       // console.log(this.model)
