@@ -18,21 +18,56 @@
       <edit-banner left="昵称" @bannerClick="show = true">
         <a href="javascript:;" slot="right">{{ model.name }}</a>
       </edit-banner>
-      <edit-banner left="UID">
+      <edit-banner left="UID" @bannerClick="textshow = true">
         <a href="javascript:;" slot="right">{{ model.username }}</a>
       </edit-banner>
-      <edit-banner left="性别"></edit-banner>
+      <edit-banner left="性别" @bannerClick="sexshow = true">
+        <a href="javascript:;" slot="right">
+          {{ model.gender == 1 ? "男" : "女" }}
+        </a>
+      </edit-banner>
       <edit-banner left="出生日期"></edit-banner>
-      <edit-banner left="个性签名"></edit-banner>
+      <edit-banner left="个性签名" @bannerClick="personshow = true">
+        <a href="javascript:;" slot="right">{{ model.user_desc }}</a>
+      </edit-banner>
+      <!-- 昵称 -->
       <van-dialog
         v-model="show"
         title="昵称"
         show-cancel-button
         @confirm="confirmClick"
+        @cancel="context = ''"
+      >
+        <van-field v-model="context" label="" autofocus />
+      </van-dialog>
+      <!-- UID栏目 -->
+      <van-dialog
+        v-model="textshow"
+        title="UID"
+        show-cancel-button
+        @confirm="uidClick"
+        @cancel="context = ''"
+      >
+        <van-field v-model="context" label="" autofocus />
+      </van-dialog>
+      <!-- 个性签名 -->
+      <van-dialog
+        v-model="personshow"
+        title="个性签名"
+        show-cancel-button
+        @confirm="personClick"
+        @cancel="context = ''"
       >
         <van-field v-model="context" label="" autofocus />
       </van-dialog>
     </div>
+    <!-- 性别 -->
+    <van-action-sheet
+      v-model="sexshow"
+      :actions="actions"
+      @select="onSelect"
+      cancel-text="取消"
+    />
   </div>
 </template>
 
@@ -45,7 +80,14 @@ export default {
     return {
       model: {},
       show: false,
+      textshow: false,
+      personshow: false,
+      sexshow: false,
       context: "",
+      actions: [
+        { name: "女", value: 0 },
+        { name: "男", value: 1 },
+      ],
     };
   },
 
@@ -69,13 +111,31 @@ export default {
         "/update/" + localStorage.getItem("id"),
         this.model
       );
+      if (res.data.code == 200) {
+        this.$msg.fail("修改成功");
+      }
     },
     confirmClick() {
       // console.log("用户点击了确认键");
       this.model.name = this.context;
       this.userUpdate();
-      context: "";
+      this.context = "";
       // console.log(this.model.name);
+    },
+    uidClick() {
+      this.model.username = this.context;
+      this.userUpdate();
+      this.context = "";
+    },
+    personClick() {
+      this.model.user_desc = this.context;
+      this.userUpdate();
+      this.context = "";
+    },
+    onSelect(data) {
+      this.model.gender = data.value;
+      this.userUpdate();
+      this.sexshow = false;
     },
   },
   created() {
