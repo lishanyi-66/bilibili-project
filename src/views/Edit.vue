@@ -15,7 +15,7 @@
           <img src="../assets/头像.jpeg" alt="" class="head" v-else />
         </div>
       </edit-banner>
-      <edit-banner left="昵称">
+      <edit-banner left="昵称" @bannerClick="show = true">
         <a href="javascript:;" slot="right">{{ model.name }}</a>
       </edit-banner>
       <edit-banner left="UID">
@@ -24,6 +24,14 @@
       <edit-banner left="性别"></edit-banner>
       <edit-banner left="出生日期"></edit-banner>
       <edit-banner left="个性签名"></edit-banner>
+      <van-dialog
+        v-model="show"
+        title="昵称"
+        show-cancel-button
+        @confirm="confirmClick"
+      >
+        <van-field v-model="context" label="" autofocus />
+      </van-dialog>
     </div>
   </div>
 </template>
@@ -36,6 +44,8 @@ export default {
   data() {
     return {
       model: {},
+      show: false,
+      context: "",
     };
   },
 
@@ -59,6 +69,13 @@ export default {
         "/update/" + localStorage.getItem("id"),
         this.model
       );
+    },
+    confirmClick() {
+      // console.log("用户点击了确认键");
+      this.model.name = this.context;
+      this.userUpdate();
+      context: "";
+      // console.log(this.model.name);
     },
   },
   created() {

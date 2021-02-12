@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="bannerClick">
     <div class="selectbanner">
       <span>{{ left }}</span>
       <span><slot name="right"></slot></span>
@@ -10,6 +10,11 @@
 <script>
 export default {
   props: ["left"],
+  methods: {
+    bannerClick() {
+      this.$emit("bannerClick");
+    },
+  },
 };
 </script>
 
