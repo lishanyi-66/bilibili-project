@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// import { component } from 'vue/types/umd'
 
 // import Login from '../views/login.vue'
 
@@ -8,7 +9,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect:'/login'
+    redirect:'/home'
   },
   {
     path: '/register',
@@ -35,6 +36,10 @@ const routes = [
     meta:{
       istoken:true
     }
+  },
+  {
+    path:'/home',
+    component:()=>import('../views/Home.vue')
   }
 ]
 
