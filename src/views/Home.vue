@@ -7,14 +7,22 @@
         :title="item.title"
         :key="index"
       >
-        <div class="detailparent">
-          <detail
-            class="detailitem"
-            :detailitem="categoryitem"
-            v-for="(categoryitem, categoryindex) in item.list"
-            :key="categoryindex"
-          ></detail>
-        </div>
+        <van-list
+            v-model="item.loading"
+            :immediate-check='false'
+            :finished="item.finished"
+            finished-text="没有更多了"
+            @load="onLoad"
+        >
+            <div class="detailparent">
+              <detail
+                class="detailitem"
+                :detailitem="categoryitem"
+                v-for="(categoryitem, categoryindex) in item.list"
+                :key="categoryindex"
+              ></detail>
+            </div>
+        </van-list>
       </van-tab>
     </van-tabs>
   </div>
@@ -42,6 +50,8 @@ export default {
       const category1 = data.map((item, index) => {
         item.list = [];
         item.page = 0;
+        item.finished=false;
+        item.loading=false;
         item.pagesize = 10;
         return item;
       });
@@ -61,7 +71,11 @@ export default {
           pagesize: numId.pagesize,
         },
       });
-      numId.list = res.data;
+      numId.list.push(...res.data)
+      numId.loading=false
+      if(res.data.length<numId.pagesize){
+        numId.finished=true
+      }
     },
     // 获取文件内容下标的方法
     categoryItem() {
@@ -69,6 +83,13 @@ export default {
       //   console.log(categoryItem);
       return categoryItem;
     },
+    onLoad(){
+      const categoryitem=this.categoryItem()
+      setTimeout(()=>{
+        categoryitem.page+=1
+      this.selectArticle()
+      },1000)
+    }
   },
   watch: {
     active() {
@@ -86,13 +107,13 @@ export default {
 .detailparent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 5px;
+  justify-content: space-between;
+  padding: 10px;
   //   padding: 10px;
   .detailitem {
-    width: 48%;
-    margin-top: 20px;
-    font-size: 14px;
+    width: 49%;
+    margin-top: 10px;
+    font-size: 13px;
     // height: 120px;
     // background-color: tomato;
   }

@@ -40,6 +40,10 @@ const routes = [
   {
     path:'/home',
     component:()=>import('../views/Home.vue')
+  },
+  {
+    path:'/article/:id',
+    component:()=>import('../views/Article.vue')
   }
 ]
 
