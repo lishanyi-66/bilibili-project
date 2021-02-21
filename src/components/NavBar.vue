@@ -32,6 +32,7 @@ export default {
 
 <style lang='less' scope>
 .navbar {
+  width: 100%;
   background-color: white;
   height: 44px;
   display: flex;

@@ -1,7 +1,8 @@
 <template>
   <div>
-    <nav-bar></nav-bar>
-    <van-tabs v-model="active" animated>
+    <nav-bar class="navbar1"></nav-bar>
+    
+    <van-tabs v-model="active" animated   offset-top="44px"  sticky>
       <van-tab
         v-for="(item, index) in category"
         :title="item.title"
@@ -25,6 +26,7 @@
         </van-list>
       </van-tab>
     </van-tabs>
+  
   </div>
 </template>
 
@@ -104,6 +106,13 @@ export default {
 </script>
 
 <style lang='less' scope>
+.navbar1{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
 .detailparent {
   display: flex;
   flex-wrap: wrap;

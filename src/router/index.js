@@ -9,7 +9,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect:'/home'
+    redirect:'/home',
+    meta:{
+      keepalive:true
+    }
   },
   {
     path: '/register',
@@ -39,7 +42,10 @@ const routes = [
   },
   {
     path:'/home',
-    component:()=>import('../views/Home.vue')
+    component:()=>import('../views/Home.vue'),
+    meta:{
+      keepalive:true
+    }
   },
   {
     path:'/article/:id',
