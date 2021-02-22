@@ -1,5 +1,5 @@
 <template>
-  <div class="box" @click="$router.push(`/article/${detailitem.id}`)">
+  <div class="box" @click="pathPush()">
     <div class="imgparent">
       <img src="" alt="" />
       <div class="outer">
@@ -23,6 +23,11 @@
 <script>
 export default {
   props: ["detailitem"],
+  methods:{
+    pathPush(){
+      this.$router.push(`/article/${this.detailitem.id}`)
+    }
+  }
 };
 </script>
 

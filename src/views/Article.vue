@@ -18,8 +18,10 @@
           <van-icon name="fire" class="vanicon" size="14" />
           <i>热门</i>
         </span>
-        <div>{{ model.name }}</div>
+        <!-- 标题 -->
+      <div class="titlename">{{ model.name }}</div>
       </div>
+      
 
       <van-icon name="arrow-down" />
     </div>
@@ -148,7 +150,7 @@ export default {
   align-items: center;
   font-size: 15px;
   span {
-    padding: 5px;
+    padding: 4px;
     background-color: #eee;
     border-radius: 30px;
     font-size: 12px;
@@ -159,9 +161,13 @@ export default {
     // vertical-align: top;
 
     i {
-      margin-left: 3px;
+      margin-left: 0px;
     }
   }
+}
+.titlename{
+  margin-left: 4px;
+  
 }
 .userinfo {
   display: flex;
