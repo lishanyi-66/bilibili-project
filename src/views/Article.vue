@@ -110,6 +110,11 @@ export default {
     this.articleitemData();
     this.commendData();
   },
+  watch:{
+    $route(to,from){
+      console.log(to,from)
+    }
+  }
 };
 </script>
 
