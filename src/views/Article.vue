@@ -19,9 +19,8 @@
           <i>热门</i>
         </span>
         <!-- 标题 -->
-      <div class="titlename">{{ model.name }}</div>
+        <div class="titlename">{{ model.name }}</div>
       </div>
-      
 
       <van-icon name="arrow-down" />
     </div>
@@ -98,7 +97,7 @@ export default {
       const res = await this.$http.get("/commend");
       // console.log(res);
       this.commendList = res.data;
-      console.log(this.commendList);
+      // console.log(this.commendList);
     },
   },
   async mounted() {
@@ -110,11 +109,12 @@ export default {
     this.articleitemData();
     this.commendData();
   },
-  watch:{
-    $route(to,from){
-      console.log(to,from)
-    }
-  }
+  watch: {
+    $route() {
+      this.articleitemData();
+      this.commendData();
+    },
+  },
 };
 </script>
 
@@ -170,9 +170,8 @@ export default {
     }
   }
 }
-.titlename{
+.titlename {
   margin-left: 4px;
-  
 }
 .userinfo {
   display: flex;
