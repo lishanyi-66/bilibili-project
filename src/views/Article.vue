@@ -67,8 +67,8 @@
           </div>
         </van-tab>
         <!-- 评论栏 -->
-        <van-tab title='评论'>
-            <comment></comment>
+        <van-tab title="评论">
+          <comment></comment>
         </van-tab>
       </van-tabs>
     </div>
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import Comment from '../components/Comment.vue';
+import Comment from "../components/Comment.vue";
 import NavBar from "../components/NavBar.vue";
 import Detail from "./Detail.vue";
 export default {
@@ -88,6 +88,7 @@ export default {
       nameUrl: "",
       active: "",
       commendList: null,
+      id: this.$route.params.id,
     };
   },
   methods: {
@@ -114,7 +115,8 @@ export default {
     this.commendData();
   },
   watch: {
-    $route() {
+    $route(to, from) {
+      // this.id = this.$route.params.id;
       this.articleitemData();
       this.commendData();
     },
