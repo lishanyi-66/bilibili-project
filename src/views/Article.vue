@@ -66,17 +66,21 @@
             </div>
           </div>
         </van-tab>
-        <van-tab title="评论">评论</van-tab>
+        <!-- 评论栏 -->
+        <van-tab title='评论'>
+            <comment></comment>
+        </van-tab>
       </van-tabs>
     </div>
   </div>
 </template>
 
 <script>
+import Comment from '../components/Comment.vue';
 import NavBar from "../components/NavBar.vue";
 import Detail from "./Detail.vue";
 export default {
-  components: { NavBar, Detail },
+  components: { NavBar, Detail, Comment },
   data() {
     return {
       model: {},

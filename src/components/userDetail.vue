@@ -149,6 +149,7 @@ export default {
   }
   .part2 {
     padding: 10px;
+    border-bottom: 1px solid #ddd;
     .base {
       display: flex;
       // justify-content: center;
